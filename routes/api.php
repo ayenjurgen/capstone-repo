@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DentalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/productList', [DentalController::class, 'index']);
+Route::get('/productShow', [DentalController::class, 'index']);
+Route::get('/appointmentList', [DentalController::class, 'appointmentList']);
+Route::get('/addproduct', [DentalController::class, 'addproduct']);
