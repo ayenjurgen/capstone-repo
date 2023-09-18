@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/productList', [DentalController::class, 'index']);
-Route::get('/productShow', [DentalController::class, 'index']);
+Route::get('/productList', [DentalController::class, 'create']);
+Route::post('/productShow', [DentalController::class, 'store']);
 Route::get('/appointmentList', [DentalController::class, 'appointmentList']);
 Route::get('/addproduct', [DentalController::class, 'addproduct']);
