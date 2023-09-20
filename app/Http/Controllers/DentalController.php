@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\AppointmentLists;
-use App\Models\Products;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,16 +13,44 @@ class DentalController extends Controller
 {
     public function index()
     {
-     return Products::all();
+     return Product::all();
     }
 
-    public function addProduct()
+    public function show(Product $product)
     {
-     return Products::all();
+        return $product;
     }
 
-    public function appointmentList()
+    public function store(ProductRequest $productRequest)
     {
-     return AppointmentLists::all();
+        $product = Product::create($productRequest->all());
+        return response(
+            [
+                'message' => 'Product successfully created',
+                'product' => $product,
+                'id' => $product->product_id
+            ],
+            201
+        );
     }
+
+    // public function update(Request $request, Product $product)
+    // {
+    //     $product->update($request->all());
+    //     return response([
+    //         'message' => 'Patient successfully updated',
+    //         'product' => $product,
+    //         'id' => $product->product_id
+    //     ]);
+    // }
+
+    // public function destroy(Product $product)
+    // {
+    //     Product::destroy($product->product_id);
+
+    //     return response([
+    //         'message' => 'Product successfully deleted'
+    //     ]);
+    // }
+
 }
