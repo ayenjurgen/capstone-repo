@@ -20,9 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 });
 
-Route::get('/products', [DentalController::class, 'index']);
-Route::post('/products', [DentalController::class, 'store']);
-Route::get('/products/{product}', [DentalController::class, 'show']);
-Route::put('/products/{product}', [DentalController::class, 'update']);
-Route::patch('/products/{product}', [DentalController::class, 'update']);
-Route::delete('/products/{product}', [DentalController::class, 'destroy']);
+
+    Route::get('/products', [DentalController::class, 'index']);
+    Route::post('/products', [DentalController::class, 'store']);
+    Route::get('/products/{product}', [DentalController::class, 'show']);
+    Route::put('/products/{product}', [DentalController::class, 'update']);
+    Route::patch('/products/{product}', [DentalController::class, 'update']);
+    Route::delete('/products/{product}', [DentalController::class, 'destroy']);

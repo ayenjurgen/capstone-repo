@@ -21,28 +21,28 @@ class DentalController extends Controller
         return $product;
     }
 
-    public function store(ProductRequest $productRequest)
+    public function store(Request $request)
     {
-        $product = Product::create($productRequest->all());
+        $product = Product::create($request->all());
         return response(
             [
                 'message' => 'Product successfully created',
                 'product' => $product,
-                'id' => $product->product_id
+                'id' => $product->id
             ],
             201
         );
     }
 
-    // public function update(Request $request, Product $product)
-    // {
-    //     $product->update($request->all());
-    //     return response([
-    //         'message' => 'Patient successfully updated',
-    //         'product' => $product,
-    //         'id' => $product->product_id
-    //     ]);
-    // }
+    public function update(Request $request, Product $product)
+    {
+        $product->update($request->all());
+        return response([
+            'message' => 'Product successfully updated',
+            'product' => $product,
+            'id' => $product->id
+        ]);
+    }
 
     // public function destroy(Product $product)
     // {
