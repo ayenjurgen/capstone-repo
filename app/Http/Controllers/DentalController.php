@@ -44,13 +44,13 @@ class DentalController extends Controller
         ]);
     }
 
-    // public function destroy(Product $product)
-    // {
-    //     Product::destroy($product->product_id);
+    public function destroy(Product $product)
+    {
+        Product::destroy($product->id);
 
-    //     return response([
-    //         'message' => 'Product successfully deleted'
-    //     ]);
-    // }
+        return response([
+            'message' => 'Product successfully deleted'
+        ]);
+    }
 
 }
