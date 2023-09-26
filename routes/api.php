@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthenticationApiController;
 use App\Http\Controllers\DentalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::put('/products/{product}', [DentalController::class, 'update']);
     Route::patch('/products/{product}', [DentalController::class, 'update']);
     Route::delete('/products/{product}', [DentalController::class, 'destroy']);
+
+    Route::post('/login', [AuthenticationApiController::class, 'login']);
