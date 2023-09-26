@@ -17,11 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-
-});
-
-
     Route::get('/products', [DentalController::class, 'index']);
     Route::post('/products', [DentalController::class, 'store']);
     Route::get('/products/{product}', [DentalController::class, 'show']);
@@ -30,3 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::delete('/products/{product}', [DentalController::class, 'destroy']);
 
     Route::post('/login', [AuthenticationApiController::class, 'login']);
+    Route::get('/users', [AuthenticationApiController::class, 'index']);
+});
+
