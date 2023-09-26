@@ -17,14 +17,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    Route::get('/products', [DentalController::class, 'index']);
-    Route::post('/products', [DentalController::class, 'store']);
-    Route::get('/products/{product}', [DentalController::class, 'show']);
-    Route::put('/products/{product}', [DentalController::class, 'update']);
-    Route::patch('/products/{product}', [DentalController::class, 'update']);
-    Route::delete('/products/{product}', [DentalController::class, 'destroy']);
-
-    Route::post('/login', [AuthenticationApiController::class, 'login']);
-    Route::get('/users', [AuthenticationApiController::class, 'index']);
+    return $request->user();
 });
+
+Route::middleware('auth.sanctum')->group(function () {
+
+    Route::post('/logout', [AuthenticationApiController::class, 'logout']);
+
+});
+Route::get('/products', [DentalController::class, 'index']);
+Route::post('/products', [DentalController::class, 'store']);
+Route::get('/products/{product}', [DentalController::class, 'show']);
+Route::put('/products/{product}', [DentalController::class, 'update']);
+Route::patch('/products/{product}', [DentalController::class, 'update']);
+Route::delete('/products/{product}', [DentalController::class, 'destroy']);
+
+
+Route::post('/login', [AuthenticationApiController::class, 'login']);
+
+
 
